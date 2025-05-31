@@ -19,16 +19,28 @@ public class TradeStore {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, unique = true)
     private String traderId;
+    @Column(nullable = false, unique = true)
     private String stockId;
+    @Column(nullable = false)
     private LocalDateTime timestamp;
+    @Column(nullable = false)
     private String firstName;
+    @Column(nullable = false)
     private String lastName;
+    @Column(nullable = false)
     private String nationalityCode;
+    @Column(nullable = false)
     private String countryOfResidenceCode;
+    @Column(nullable = false)
     private LocalDate dateOfBirth;
+    @Column(nullable = false)
     private BigDecimal amount;
+    @Column(nullable = false)
     private String currency;
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private BuyOrSell buyOrSell;
 
