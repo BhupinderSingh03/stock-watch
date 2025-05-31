@@ -1,5 +1,6 @@
 package org.stock.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
@@ -40,8 +41,9 @@ public class TradeRequest {
 
     @NotNull
     @JsonProperty("date_of_birth")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Schema(example = "1991-05-13", description = "Date of birth in YYYY-MM-DD format")
-    private LocalDate dateOfBirth;
+    private String dateOfBirth;
 
     @NotBlank
     @JsonProperty("unique_trader_id")
