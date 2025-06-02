@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class ReportToKafkaRoute extends RouteBuilder {
 
     @Override
-    public void configure() throws Exception {
+    public void configure() {
         from("direct:sendToKafka")
                 .routeId("regulatory-report-to-kafka")
                 .marshal().json()  // convert object to JSON string

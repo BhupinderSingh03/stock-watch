@@ -1,9 +1,9 @@
 package org.stock.service;
 
-import org.stock.model.RegulatoryReportDto;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.stock.model.RegulatoryReportDto;
 
 @Service
 public class RegulatoryService {

@@ -1,24 +1,17 @@
 package org.stock.service;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
-import org.stock.model.RegulatoryReportDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import org.stock.entity.ProblemTrader;
 import org.stock.entity.TradeStore;
-import org.stock.exceptions.NonUniqueIdException;
+import org.stock.model.RegulatoryReportDto;
 import org.stock.model.TradeRequestDto;
 import org.stock.repository.ProblemTraderRepository;
 import org.stock.repository.TradeStoreRepository;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-
-import static org.springframework.http.HttpStatus.CONFLICT;
 
 @Service
 public class TradeService {

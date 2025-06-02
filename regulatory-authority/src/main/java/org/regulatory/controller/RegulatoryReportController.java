@@ -3,13 +3,9 @@ package org.regulatory.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.camel.ProducerTemplate;
-import org.stock.model.RegulatoryReportDto;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
+import org.stock.model.RegulatoryReportDto;
 
 @RestController
 @RequestMapping("/regulatory/report")

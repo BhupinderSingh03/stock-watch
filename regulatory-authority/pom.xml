@@ -13,23 +13,23 @@
 
     <dependencies>
         <!-- Spring Web -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-web</artifactId>-->
+<!--        </dependency>-->
 
-        <!-- Validation -->
-        <dependency>
-            <groupId>jakarta.validation</groupId>
-            <artifactId>jakarta.validation-api</artifactId>
-        </dependency>
+<!--        &lt;!&ndash; Validation &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>jakarta.validation</groupId>-->
+<!--            <artifactId>jakarta.validation-api</artifactId>-->
+<!--        </dependency>-->
 
-        <!-- Jackson XML support -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
-            <version>2.15.2</version> <!-- Use latest stable version -->
-        </dependency>
+<!--        &lt;!&ndash; Jackson XML support &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.fasterxml.jackson.dataformat</groupId>-->
+<!--            <artifactId>jackson-dataformat-xml</artifactId>-->
+<!--            <version>2.15.2</version> &lt;!&ndash; Use latest stable version &ndash;&gt;-->
+<!--        </dependency>-->
 
         <!-- Camel Core + Spring Boot Starter -->
         <dependency>
@@ -60,9 +60,6 @@
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
-
-
-
         <dependency>
             <groupId>org</groupId>
             <artifactId>common</artifactId>
@@ -70,7 +67,6 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

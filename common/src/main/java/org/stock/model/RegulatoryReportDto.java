@@ -2,10 +2,7 @@ package org.stock.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -37,10 +34,10 @@ public class RegulatoryReportDto {
     @JsonProperty("country_of_residence")
     private String countryOfResidence; // ISO 3166-1 alpha-2
 
-    @NotBlank(message = "dateOfBirth is required")
-    @JsonProperty("date_of_birth")
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dateOfBirth;
+//
+//    @JsonProperty("date_of_birth")
+//    @JsonFormat(pattern = "yyyy-MM-dd")
+//    private LocalDate dateOfBirth;
 
     @NotBlank(message = "unique_trader_id is required")
     @JsonProperty("unique_trader_id")
@@ -50,9 +47,9 @@ public class RegulatoryReportDto {
     @JsonProperty("unique_stock_id")
     private String uniqueStockId;
 
-    @NotNull(message = "Timestamp is mandatory")
-    @JsonProperty("detected_at")
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime detectedAt;
+//    @NotNull(message = "Timestamp is mandatory")
+//    @JsonProperty("detected_at")
+//    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+//    private LocalDateTime detectedAt;
 }
 
