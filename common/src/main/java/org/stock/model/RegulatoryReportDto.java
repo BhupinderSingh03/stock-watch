@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Builder
@@ -34,10 +35,10 @@ public class RegulatoryReportDto {
     @JsonProperty("country_of_residence")
     private String countryOfResidence; // ISO 3166-1 alpha-2
 
-//
-//    @JsonProperty("date_of_birth")
-//    @JsonFormat(pattern = "yyyy-MM-dd")
-//    private LocalDate dateOfBirth;
+
+    @JsonProperty("date_of_birth")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date dateOfBirth;
 
     @NotBlank(message = "unique_trader_id is required")
     @JsonProperty("unique_trader_id")
@@ -47,9 +48,9 @@ public class RegulatoryReportDto {
     @JsonProperty("unique_stock_id")
     private String uniqueStockId;
 
-//    @NotNull(message = "Timestamp is mandatory")
-//    @JsonProperty("detected_at")
-//    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-//    private LocalDateTime detectedAt;
+    @NotNull(message = "Timestamp is mandatory")
+    @JsonProperty("detected_at")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    private Date detectedAt;
 }
 

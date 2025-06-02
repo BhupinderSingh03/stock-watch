@@ -12,6 +12,8 @@ import org.stock.repository.ProblemTraderRepository;
 import org.stock.repository.TradeStoreRepository;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 
 @Service
 public class TradeService {
@@ -93,10 +95,10 @@ public class TradeService {
                     .lastName(request.getLastName())
                     .nationality(request.getNationalityCode())
                     .countryOfResidence(request.getCountryOfResidenceCode())
-                    .dateOfBirth(request.getDateOfBirth())
+                    .dateOfBirth(Date.from(request.getDateOfBirth().atStartOfDay(ZoneId.systemDefault()).toInstant()))
                     .uniqueTraderId(request.getUniqueTraderId())
                     .uniqueStockId(request.getUniqueStockId())
-                    .detectedAt(LocalDateTime.now())
+                    .detectedAt(new Date())
                     .build();
 
             regulatoryService.notifyAuthority(report); // or notifyAuthorityAsXml(report);
