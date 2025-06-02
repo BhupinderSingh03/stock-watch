@@ -17,7 +17,6 @@ public class KafkaLogConsumerRoute extends RouteBuilder {
                 "&keyDeserializer=org.apache.kafka.common.serialization.StringDeserializer" +
                 "&valueDeserializer=org.apache.kafka.common.serialization.StringDeserializer")
                 .unmarshal(get(RegulatoryReportDto.class))
-                //.routeId("kafka-log-consumer")
                 .log("Received suspicious trader report: ${body}")
                 .marshal().json()
                 .process(exchange -> {
@@ -36,17 +35,3 @@ public class KafkaLogConsumerRoute extends RouteBuilder {
         return jsonDataFormat;
     }
 }
-
-//
-//@Component
-//public class KafkaLogConsumerRoute extends RouteBuilder {
-//
-//    @Override
-//    public void configure() throws Exception {
-//        from("kafka:suspicious-traders?brokers=localhost:9092&groupId=log-writer-group")
-//                .routeId("kafka-log-consumer")
-//                .log("Received suspicious trader report: ${body}")
-//                .to("file:logs/suspicious-reports?fileName=report-${date:now:yyyyMMddHHmmssSSS}.log&fileExist=Append");
-//        ;
-//    }
-//}

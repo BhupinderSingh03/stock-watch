@@ -1,7 +1,6 @@
 package org.stock.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,10 +18,9 @@ public class TradeStore {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String traderId;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String stockId;
     @Column(nullable = false)
     private LocalDateTime timestamp;

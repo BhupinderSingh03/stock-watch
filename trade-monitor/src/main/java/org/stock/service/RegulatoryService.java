@@ -1,14 +1,20 @@
 package org.stock.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.stock.model.RegulatoryReportDto;
+
+import static org.springframework.http.HttpStatus.ACCEPTED;
 
 @Service
 public class RegulatoryService {
 
     private final RestTemplate restTemplate;
+    private static final Logger log = LoggerFactory.getLogger(RegulatoryService.class);
 
     public RegulatoryService(RestTemplateBuilder builder) {
         this.restTemplate = builder.build();
@@ -19,8 +25,27 @@ public class RegulatoryService {
      *
      * @param dto the regulatory report data transfer object
      */
-    public void notifyAuthority(RegulatoryReportDto dto) {
-        restTemplate.postForEntity("https://localhost:8080/regulatory/report", dto, RegulatoryReportDto.class);
+    public boolean notifyAuthority(RegulatoryReportDto dto) {
+        try {
+            ResponseEntity<String> response = restTemplate.postForEntity(
+                    "http://localhost:8082/regulatory/report",
+                    dto,
+                    String.class
+            );
+
+            if (response.getStatusCode() == ACCEPTED) {
+                String responseBody = response.getBody();
+                log.info("Authority acknowledged the report: " + responseBody);
+                return true;
+            } else {
+                log.error("Unexpected status from authority: " + response.getStatusCode());
+                return false;
+            }
+        } catch (Exception e) {
+            log.error("Error notifying authority: " + e.getMessage());
+            return false;
+        }
     }
+
 }
 

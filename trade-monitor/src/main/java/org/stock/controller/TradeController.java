@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.stock.model.TradeRequestDto;
 import org.stock.service.TradeService;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/trades")
 @RequiredArgsConstructor
@@ -24,9 +26,8 @@ public class TradeController {
      */
 
     @PostMapping
-    public ResponseEntity<String> createTrade(@Valid @RequestBody TradeRequestDto requestDto) {
-        tradeService.processTrade(requestDto);
-        return ResponseEntity.ok("Trade processed successfully");
+    public ResponseEntity<Map<String, String>> createTrade(@Valid @RequestBody TradeRequestDto requestDto) {
+       return tradeService.checkSuspiciousTrade(requestDto);
     }
 }
 

@@ -9,7 +9,13 @@ import java.time.LocalDateTime;
 @Repository
 public interface TradeStoreRepository extends JpaRepository<TradeStore, Long> {
 
-//    @Query("""
+    long countByTraderIdAndStockIdAndTimestampGreaterThanEqual(
+            String traderId,
+            String stockId,
+            LocalDateTime since
+    );
+
+    //    @Query("""
 //        SELECT COUNT(t) FROM TradeStore t
 //        WHERE t.traderId = :traderId
 //          AND t.stockId = :stockId
@@ -21,10 +27,5 @@ public interface TradeStoreRepository extends JpaRepository<TradeStore, Long> {
 //            @Param("since") LocalDateTime since
 //    );
 
-    long countByTraderIdAndStockIdAndTimestampGreaterThanEqual(
-            String traderId,
-            String stockId,
-            LocalDateTime since
-    );
 }
 

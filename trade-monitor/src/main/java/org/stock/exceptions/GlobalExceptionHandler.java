@@ -1,12 +1,11 @@
 package org.stock.exceptions;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -43,9 +42,9 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>("Invalid request", HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<String> handleConflict(DataIntegrityViolationException ex) {
-        return ResponseEntity.status(HttpStatus.CONFLICT).body("Trader ID or Stock ID already exists.");
-    }
+//    @ExceptionHandler(DataIntegrityViolationException.class)
+//    public ResponseEntity<String> handleConflict(DataIntegrityViolationException ex) {
+//        return ResponseEntity.status(HttpStatus.CONFLICT).body("Trader ID or Stock ID already exists.");
+//    }
 
 }

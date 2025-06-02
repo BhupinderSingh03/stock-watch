@@ -1,2 +1,1 @@
-CREATE TABLE problem_trader (id VARCHAR(255) PRIMARY KEY, flagged_at TIMESTAMP);
-INSERT INTO problem_trader (id, flagged_at) VALUES ('demo_trader', NOW());
+CREATE TABLE problem_trader (id BIGINT AUTO_INCREMENT PRIMARY KEY, trader_id VARCHAR(255),flagged_at TIMESTAMP, notified BOOLEAN DEFAULT FALSE);
