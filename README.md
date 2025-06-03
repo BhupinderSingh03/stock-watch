@@ -14,7 +14,8 @@
    ```bash
     docker-compose -f regulatory-authority/docker-compose.yml up -d
     ```
-2. There are three services and one common module in this project:
+2. It's a multi-module Maven project containing three services and one common module
+3. Below are the three services and one common module in this project:
      - **trade-monitor**: A service that check the suspicious trades and notifies the regulatory authority.
      - **regulatory-authority**: The service that interacts with Kafka and produces the event.
      - **log-writer**: A service that consumes the events from Kafka and writes them to a log file.
@@ -59,4 +60,9 @@
   - If the trader is already flagged, the trade-monitor service will not notify the regulatory authority again.
   - The tradeCount is used to determine if the trader is suspicious or not. If the tradeCount is greater than 5, the trader is flagged.
 - Use multiple partitions for the topic to enable parallel consumption and horizontal scaling. Partitioning can be based on nationality or traderId (hashed key) to ensure that trades from the same trader are processed by the same consumer instance. All messages with the same traderId go to the same partition
+- Each service will be deployed as a separate microservice, possibly in a containerized environment like Docker or Kubernetes.
+- There will be a routing service or API Gateway to route requests to the appropriate service. This will help in managing the services and scaling them independently in future also.
 - Ensure proper logging in production.
+
+## 📚 Architecture Diagram attached in the project root directory
+![img.png](architecture.png)
