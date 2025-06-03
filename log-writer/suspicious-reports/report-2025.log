@@ -18,3 +18,5 @@
 {"first_name":"John","last_name":"Doe","nationality":"AB","country_of_residence":"US","date_of_birth":"1991-05-13","unique_trader_id":"TRADER2024d41","unique_stock_id":"STOCK0w73091","detected_at":"2025-06-03T21:46:47"}
 {"first_name":"John","last_name":"Doe","nationality":"AB","country_of_residence":"US","date_of_birth":"1991-05-13","unique_trader_id":"TRADER2024df41","unique_stock_id":"STOCK0w73091","detected_at":"2025-06-03T21:49:01"}
 {"first_name":"John","last_name":"Doe","nationality":"DE","country_of_residence":"US","date_of_birth":"2025-06-03","unique_trader_id":"TRADER1234","unique_stock_id":"STOCK5678","detected_at":"2025-06-03T21:51:35"}
+{"first_name":"John","last_name":"Doe","nationality":"US","country_of_residence":"US","date_of_birth":"1990-01-01","unique_trader_id":"TRADER123","unique_stock_id":"STOCK456","detected_at":"2025-06-01T15:30:00"}
+{"first_name":"John","last_name":"Doe","nationality":"AB","country_of_residence":"US","date_of_birth":"1991-05-13","unique_trader_id":"TRADER2024df41","unique_stock_id":"STOCK0w73091","detected_at":"2025-06-03T23:26:09"}

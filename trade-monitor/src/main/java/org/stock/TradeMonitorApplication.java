@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class StockWatchApplication {
+public class TradeMonitorApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(StockWatchApplication.class, args);
+        SpringApplication.run(TradeMonitorApplication.class, args);
     }
 }

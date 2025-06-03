@@ -10,7 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.stock.StockWatchApplication;
+import org.stock.TradeMonitorApplication;
 import org.stock.model.TradeRequestDto;
 import org.stock.service.TradeService;
 
@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.stock.model.BuyOrSell.BUY;
 
 @WebMvcTest(TradeController.class)
-@ContextConfiguration(classes = StockWatchApplication.class)
+@ContextConfiguration(classes = TradeMonitorApplication.class)
 class TradeControllerTest {
 
     @Autowired

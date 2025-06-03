@@ -66,3 +66,6 @@
 
 ## 📚 Architecture Diagram attached in the project root directory
 ![img.png](architecture.png)
+
+## Project is also available on my GitHub
+https://github.com/BhupinderSingh03/stock-watch
