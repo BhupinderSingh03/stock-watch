@@ -21,6 +21,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.ToDoubleBiFunction;
 
 @Service
 @RequiredArgsConstructor
@@ -33,6 +34,12 @@ public class TradeService {
     private static final Logger log = LoggerFactory.getLogger(TradeService.class);
 
 
+    /**
+     * Checks if a trade is suspicious and processes it accordingly.
+     *
+     * @param requestDto the trade request data transfer object
+     * @return ResponseEntity with the result of the trade check
+     */
     public ResponseEntity checkSuspiciousTrade(TradeRequestDto requestDto) {
         Map<String, String> response = new HashMap<>();
 
@@ -40,7 +47,7 @@ public class TradeService {
         tradeStoreRepository.save(new TradeStore(
                 requestDto.getUniqueTraderId(),
                 requestDto.getUniqueStockId(),
-                LocalDateTime.now(),
+                Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()),
                 requestDto.getFirstName(),
                 requestDto.getLastName(),
                 requestDto.getNationalityCode(),
@@ -53,6 +60,7 @@ public class TradeService {
 
 
         // Check if trader is already flagged
+        // TODO: use redis  distributed cache for fast lookup
         if (problemTraderRepository.existsByTraderId(requestDto.getUniqueTraderId())) {
             log.warn("Trade rejected: {}", requestDto.getUniqueTraderId());
             response.put("message", "Trade rejected: Trader is flagged as problem trader.");
@@ -63,6 +71,14 @@ public class TradeService {
         return suspiciousCheck(requestDto.getUniqueTraderId(), isSuspicious, response);
     }
 
+    /**
+     * Checks if the trade is suspicious and returns the appropriate response.
+     *
+     * @param uniqueTraderId the unique identifier of the trader
+     * @param isSuspicious   whether the trade is suspicious
+     * @param response       the response map to populate with messages
+     * @return ResponseEntity with the result of the suspicious check
+     */
     private ResponseEntity<Map<String, String>> suspiciousCheck(String uniqueTraderId, boolean isSuspicious, Map<String, String> response) {
         if (isSuspicious) {
             log.warn("Suspicious activity: {}", uniqueTraderId);
@@ -74,29 +90,28 @@ public class TradeService {
         }
     }
 
-    //use distributed redis cache for better performance and scalability
-    @Transactional
+    /**
+     * Processes the trade request and checks for suspicious activity.
+     *
+     * @param request the trade request data transfer object
+     * @return true if the trade is suspicious, false otherwise
+     * @throws ResponseStatusException if any error occurs during processing
+     */
     protected boolean processTrade(TradeRequestDto request) throws ResponseStatusException {
-        //check this from database , cache and check multiple threads access too - pending
         boolean isSuspicious = false;
-
-        // Check recent trades
         LocalDateTime since = LocalDateTime.now().minusMinutes(10);
 
-        //database locking required here to ensure consistency - pending
+        // TODO: use redis  distributed cache for fast lookup
         long tradeCount = tradeStoreRepository.countByTraderIdAndStockIdAndTimestampGreaterThanEqual(
                 request.getUniqueTraderId(),
                 request.getUniqueStockId(),
                 since
         );
-
         log.warn("trade count: {}", tradeCount);
 
-
-        //check concurrency issues here - pending
         if (tradeCount > 5) {
-            isSuspicious  = true;
-            // a) Log alert
+            isSuspicious = true;
+            // Log alert
             log.warn("Suspicious trading by trader '{}' on stock '{}'. Count: {}",
                     request.getUniqueTraderId(), request.getUniqueStockId(), tradeCount);
 
@@ -113,7 +128,7 @@ public class TradeService {
                         .lastName(request.getLastName())
                         .nationality(request.getNationalityCode())
                         .countryOfResidence(request.getCountryOfResidenceCode())
-                        .dateOfBirth(Date.from(request.getDateOfBirth().atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                        .dateOfBirth(request.getDateOfBirth())
                         .uniqueTraderId(request.getUniqueTraderId())
                         .uniqueStockId(request.getUniqueStockId())
                         .detectedAt(new Date())
@@ -123,6 +138,7 @@ public class TradeService {
 
                 // Update the notified flag after successfully notified
                 if (isNotified) {
+                    // TODO: use redis  distributed cache for fast lookup
                     ProblemTrader flaggedTrader = problemTraderRepository.findByTraderId(request.getUniqueTraderId());
                     if (flaggedTrader != null) {
                         flaggedTrader.setNotifiedToRegulatoryAuthority(true);

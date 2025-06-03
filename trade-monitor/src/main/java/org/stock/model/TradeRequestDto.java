@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -42,7 +42,7 @@ public class TradeRequestDto {
     @JsonProperty("date_of_birth")
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Schema(example = "1991-05-13", description = "Date of birth in YYYY-MM-DD format")
-    private LocalDate dateOfBirth;
+    private Date dateOfBirth;
 
     @NotBlank(message = "unique_trader_id is required")
     @JsonProperty("unique_trader_id")

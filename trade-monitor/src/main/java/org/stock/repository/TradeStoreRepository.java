@@ -14,18 +14,5 @@ public interface TradeStoreRepository extends JpaRepository<TradeStore, Long> {
             String stockId,
             LocalDateTime since
     );
-
-    //    @Query("""
-//        SELECT COUNT(t) FROM TradeStore t
-//        WHERE t.traderId = :traderId
-//          AND t.stockId = :stockId
-//          AND t.timestamp >= :since
-//    """)
-//    long countRecentTrades(
-//            @Param("traderId") String traderId,
-//            @Param("stockId") String stockId,
-//            @Param("since") LocalDateTime since
-//    );
-
 }
 

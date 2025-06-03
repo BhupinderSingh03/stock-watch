@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 import org.stock.model.BuyOrSell;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Data
@@ -23,7 +22,7 @@ public class TradeStore {
     @Column(nullable = false)
     private String stockId;
     @Column(nullable = false)
-    private LocalDateTime timestamp;
+    private Date timestamp;
     @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)
@@ -33,7 +32,8 @@ public class TradeStore {
     @Column(nullable = false)
     private String countryOfResidenceCode;
     @Column(nullable = false)
-    private LocalDate dateOfBirth;
+    @Temporal(TemporalType.DATE)
+    private Date dateOfBirth;
     @Column(nullable = false)
     private BigDecimal amount;
     @Column(nullable = false)
@@ -42,7 +42,7 @@ public class TradeStore {
     @Enumerated(EnumType.STRING)
     private BuyOrSell buyOrSell;
 
-    public TradeStore(String traderId, String stockId, LocalDateTime timestamp, String firstName, String lastName, String nationalityCode, String countryOfResidenceCode, LocalDate dateOfBirth, BigDecimal amount, String currency, BuyOrSell buyOrSell) {
+    public TradeStore(String traderId, String stockId, Date timestamp, String firstName, String lastName, String nationalityCode, String countryOfResidenceCode, Date dateOfBirth, BigDecimal amount, String currency, BuyOrSell buyOrSell) {
         this.traderId = traderId;
         this.stockId = stockId;
         this.timestamp = timestamp;
