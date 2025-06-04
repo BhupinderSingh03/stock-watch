@@ -10,7 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.stock.model.RegulatoryReportDto;
+import org.common.model.RegulatoryReportDto;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
