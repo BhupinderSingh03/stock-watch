@@ -1,8 +1,8 @@
-package org.stock.repository;
+package org.trade.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.stock.entity.TradeStore;
+import org.trade.entity.TradeStore;
 
 import java.time.LocalDateTime;
 

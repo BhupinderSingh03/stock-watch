@@ -1,8 +1,8 @@
-package org.stock.repository;
+package org.trade.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.stock.entity.ProblemTrader;
+import org.trade.entity.ProblemTrader;
 
 @Repository
 public interface ProblemTraderRepository extends JpaRepository<ProblemTrader, String> {

@@ -1,4 +1,4 @@
-package org.stock.controller;
+package org.trade.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.stock.model.TradeRequestDto;
-import org.stock.service.TradeService;
+import org.trade.model.TradeRequestDto;
+import org.trade.service.TradeService;
 
 import java.util.Map;
 

@@ -3,8 +3,8 @@ package org.log.config;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jackson.JacksonDataFormat;
+import org.common.model.RegulatoryReportDto;
 import org.springframework.stereotype.Component;
-import org.stock.model.RegulatoryReportDto;
 
 @Component
 public class KafkaLogConsumerRoute extends RouteBuilder {

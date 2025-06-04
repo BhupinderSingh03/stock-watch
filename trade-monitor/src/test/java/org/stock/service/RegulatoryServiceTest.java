@@ -10,7 +10,8 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-import org.stock.model.RegulatoryReportDto;
+import org.common.model.RegulatoryReportDto;
+import org.trade.service.RegulatoryService;
 
 import java.time.LocalDate;
 import java.time.ZoneOffset;

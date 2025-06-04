@@ -10,9 +10,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.stock.TradeMonitorApplication;
-import org.stock.model.TradeRequestDto;
-import org.stock.service.TradeService;
+import org.trade.TradeMonitorApplication;
+import org.trade.controller.TradeController;
+import org.trade.model.TradeRequestDto;
+import org.trade.service.TradeService;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -25,7 +26,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.stock.model.BuyOrSell.BUY;
+import static org.trade.model.BuyOrSell.BUY;
 
 @WebMvcTest(TradeController.class)
 @ContextConfiguration(classes = TradeMonitorApplication.class)

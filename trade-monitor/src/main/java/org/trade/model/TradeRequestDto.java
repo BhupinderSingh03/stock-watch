@@ -1,4 +1,4 @@
-package org.stock.model;
+package org.trade.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;

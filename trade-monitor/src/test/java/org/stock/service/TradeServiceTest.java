@@ -9,11 +9,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.stock.entity.ProblemTrader;
-import org.stock.model.RegulatoryReportDto;
-import org.stock.model.TradeRequestDto;
-import org.stock.repository.ProblemTraderRepository;
-import org.stock.repository.TradeStoreRepository;
+import org.trade.entity.ProblemTrader;
+import org.common.model.RegulatoryReportDto;
+import org.trade.model.TradeRequestDto;
+import org.trade.repository.ProblemTraderRepository;
+import org.trade.repository.TradeStoreRepository;
+import org.trade.service.RegulatoryService;
+import org.trade.service.TradeService;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -23,7 +25,7 @@ import java.util.Date;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.stock.model.BuyOrSell.BUY;
+import static org.trade.model.BuyOrSell.BUY;
 
 @ExtendWith(MockitoExtension.class)
 class TradeServiceTest {

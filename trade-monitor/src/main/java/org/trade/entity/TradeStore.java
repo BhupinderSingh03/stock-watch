@@ -1,10 +1,10 @@
-package org.stock.entity;
+package org.trade.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.stock.model.BuyOrSell;
+import org.trade.model.BuyOrSell;
 
 import java.math.BigDecimal;
 import java.util.Date;

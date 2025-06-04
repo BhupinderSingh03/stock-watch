@@ -1,4 +1,4 @@
-package org.stock.exceptions;
+package org.trade.exceptions;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.slf4j.Logger;
@@ -9,7 +9,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.stock.service.TradeService;
+import org.trade.service.TradeService;
 
 import java.time.LocalDate;
 import java.util.HashMap;

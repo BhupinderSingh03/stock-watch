@@ -1,4 +1,4 @@
-package org.stock.model;
+package org.common.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,7 +15,6 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-//document the schema for the regulatory report
 public class RegulatoryReportDto {
 
     @NotBlank(message = "first_name is required")

@@ -1,4 +1,4 @@
-package org.stock.entity;
+package org.trade.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

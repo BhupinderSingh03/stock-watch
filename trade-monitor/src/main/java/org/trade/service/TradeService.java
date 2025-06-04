@@ -1,6 +1,5 @@
-package org.stock.service;
+package org.trade.service;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,19 +8,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import org.stock.entity.ProblemTrader;
-import org.stock.entity.TradeStore;
-import org.stock.model.RegulatoryReportDto;
-import org.stock.model.TradeRequestDto;
-import org.stock.repository.ProblemTraderRepository;
-import org.stock.repository.TradeStoreRepository;
+import org.trade.entity.ProblemTrader;
+import org.trade.entity.TradeStore;
+import org.common.model.RegulatoryReportDto;
+import org.trade.model.TradeRequestDto;
+import org.trade.repository.ProblemTraderRepository;
+import org.trade.repository.TradeStoreRepository;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.ToDoubleBiFunction;
 
 @Service
 @RequiredArgsConstructor
