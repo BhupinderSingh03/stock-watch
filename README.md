@@ -59,7 +59,10 @@
 7. Swagger UI is available for the trade-monitor service at:
     - URL: `http://localhost:8080/swagger-ui.html`
     - API Docs: `http://localhost:8080/v3/api-docs`
-8. To test the integration, you can use the Swagger UI of the trade-monitor service to create trades. The regulatory authority will produce events to Kafka, and the log-writer will consume these events and write them to a log file.
+8. you can access and call the trade-monitor service API at:
+    - from Postman, URL: `http://localhost:8080/api/v1/trades`
+    - Or call it from swagger UI
+9. To test the integration, you can use the Swagger UI of the trade-monitor service to create trades. The regulatory authority will produce events to Kafka, and the log-writer will consume these events and write them to a log file.
 9. Log files for the log-writer service will be created in the `log-writer/suspicious-reports` directory. You can check these files to see the consumed events.
 10. All the trade requests are stored in the H2 database of the trade-monitor service even if trader is already flagged. You can query the database to see the trades. 
     - Example query to see all trades:
