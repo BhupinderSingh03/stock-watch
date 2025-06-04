@@ -65,14 +65,14 @@
 9. To test the integration, you can use the Swagger UI of the trade-monitor service to create trades. The regulatory authority will produce events to Kafka, and the log-writer will consume these events and write them to a log file.
 10. All the endpoints of all the services are documented in Swagger UI. You can access it at:
     -  `http://localhost:8080/swagger-ui.html`
-10. Log files for the log-writer service will be created in the `log-writer/suspicious-reports` directory. You can check these files to see the consumed events.
-11. All the trade requests are stored in the H2 database of the trade-monitor service even if trader is already flagged. You can query the database to see the trades. 
+11. Log files for the log-writer service will be created in the `log-writer/suspicious-reports` directory. You can check these files to see the consumed events.
+12. All the trade requests are stored in the H2 database of the trade-monitor service even if trader is already flagged. You can query the database to see the trades. 
     - Example query to see all trades:
       ```sql
       SELECT * FROM TRADE_STORE;
       ```
-12. If trader is already flagged, the trade-monitor service will not notify the regulatory authority again. You can check the Swagger UI for the error response format.
-13. In distrubuted environment, there is a possibility that the same trade can be processed by multiple instances of the trade-monitor service and it will try to notify the regulatory authority twice for the same trader. To avoid this, traderId is a unique contraint in the H2 database. If a trade with the same traderId is already present, it will not be processed again.
+13. If trader is already flagged, the trade-monitor service will not notify the regulatory authority again. You can check the Swagger UI for the error response format.
+14. In distrubuted environment, there is a possibility that the same trade can be processed by multiple instances of the trade-monitor service and it will try to notify the regulatory authority twice for the same trader. To avoid this, traderId is a unique contraint in the H2 database. If a trade with the same traderId is already present, it will not be processed again.
 
 ## 🚀 Production Notes - pending to be implemented
 - For production use, consider using a more robust database instead of H2 with Partitioning.
