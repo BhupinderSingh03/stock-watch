@@ -46,7 +46,7 @@ class RegulatoryReportControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(reportDto)))
                 .andExpect(status().isAccepted())
-                .andExpect(content().string("Report received and sent to Kafka topic."));
+                .andExpect(content().string("{\"message\":\"Report received and sent to Kafka topic.\"}"));
 
         ArgumentCaptor<RegulatoryReportDto> captor = ArgumentCaptor.forClass(RegulatoryReportDto.class);
         verify(producerTemplate).sendBody(Mockito.eq("direct:sendToKafka"), captor.capture());

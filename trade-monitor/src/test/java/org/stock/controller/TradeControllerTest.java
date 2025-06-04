@@ -26,6 +26,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.trade.contants.Constants.MESSAGE;
 import static org.trade.model.BuyOrSell.BUY;
 
 @WebMvcTest(TradeController.class)
@@ -48,7 +49,7 @@ class TradeControllerTest {
                 TradeRequestDto validRequest = new TradeRequestDto("John", "Doe", "DE", "US",
                         date, "TRADER1234",
                 new BigDecimal("1000.00"), "USD", "STOCK0w73091", BUY);
-        Map<String, String> response = Map.of("message", "Trade accepted. No suspicious activity detected.");
+        Map<String, String> response = Map.of(MESSAGE, "Trade accepted. No suspicious activity detected.");
         ResponseEntity<Map<String, String>> responseEntity = ResponseEntity.ok(response);
 
         when(tradeService.checkSuspiciousTrade(any())).thenReturn(responseEntity);
@@ -78,7 +79,7 @@ class TradeControllerTest {
         TradeRequestDto validRequest = new TradeRequestDto("John", "Doe", "DE", "US",
                 date, "TRADER1234",
                 new BigDecimal("1000.00"), "USD", "STOCK0w73091", BUY);
-        Map<String, String> response = Map.of("message", "Trade accepted. No suspicious activity detected.");
+        Map<String, String> response = Map.of(MESSAGE, "Trade accepted. No suspicious activity detected.");
         ResponseEntity<Map<String, String>> responseEntity = ResponseEntity.ok(response);
 
         when(tradeService.checkSuspiciousTrade(validRequest)).thenThrow(new RuntimeException("Internal Server Error"));

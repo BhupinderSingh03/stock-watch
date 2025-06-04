@@ -13,6 +13,7 @@ import static org.springframework.http.HttpStatus.ACCEPTED;
 @Service
 public class RegulatoryService {
 
+    public static final String REGULATORY_URL = "http://localhost:8082/regulatory/report";
     private final RestTemplate restTemplate;
     private static final Logger log = LoggerFactory.getLogger(RegulatoryService.class);
 
@@ -28,7 +29,7 @@ public class RegulatoryService {
     public boolean notifyAuthority(RegulatoryReportDto dto) {
         try {
             ResponseEntity<String> response = restTemplate.postForEntity(
-                    "http://localhost:8082/regulatory/report",
+                    REGULATORY_URL,
                     dto,
                     String.class
             );

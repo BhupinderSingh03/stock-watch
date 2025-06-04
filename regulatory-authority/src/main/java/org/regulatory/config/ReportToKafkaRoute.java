@@ -3,6 +3,8 @@ package org.regulatory.config;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
+import static org.regulatory.contants.Constants.ENDPOINT_SEND_TO_KAFKA;
+
 @Component
 public class ReportToKafkaRoute extends RouteBuilder {
 
@@ -14,7 +16,7 @@ public class ReportToKafkaRoute extends RouteBuilder {
      */
     @Override
     public void configure() {
-        from("direct:sendToKafka")
+        from(ENDPOINT_SEND_TO_KAFKA)
                 .routeId("regulatory-report-to-kafka")
                 .marshal().json()  // convert object to JSON string
                 .to("kafka:suspicious-traders?brokers={{spring.kafka.bootstrap-servers}}");

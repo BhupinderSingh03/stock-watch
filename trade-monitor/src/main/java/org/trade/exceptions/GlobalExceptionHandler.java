@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static org.trade.contants.Constants.*;
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     private static final Logger log = LoggerFactory.getLogger(TradeService.class);
@@ -33,19 +35,19 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Object> handleInvalidFormatException(InvalidFormatException ex) {
         if (ex.getTargetType().equals(LocalDate.class)) {
             Map<String, Object> error = new HashMap<>();
-            error.put("message", "Invalid date_of_birth format. Expected yyyy-MM-dd.");
+            error.put(MESSAGE, INVALID_FORMAT);
             error.put("status", HttpStatus.BAD_REQUEST.value());
             return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
         }
 
-        return new ResponseEntity<>("Invalid request", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(INVALID_REQUEST, HttpStatus.BAD_REQUEST);
     }
 
     // Handle any other uncaught exceptions (500 Internal Server Error)
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, String>> handleAllOtherExceptions(Exception ex) {
         Map<String, String> error = new HashMap<>();
-        error.put("error", "An unexpected error occurred. Please try again later.");
+        error.put("error", UNEXPECTED_ERROR);
         log.error("An unexpected error occurred." + ex.getMessage(), ex);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
     }

@@ -21,6 +21,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.trade.contants.Constants.*;
+
 @Service
 @RequiredArgsConstructor
 public class TradeService {
@@ -61,7 +63,7 @@ public class TradeService {
         // TODO: use redis  distributed cache for fast lookup
         if (problemTraderRepository.existsByTraderId(requestDto.getUniqueTraderId())) {
             log.warn("Trade rejected: {}", requestDto.getUniqueTraderId());
-            response.put("message", "Trade rejected: Trader is flagged as problem trader.");
+            response.put(MESSAGE, REJECTED_TRADE_FLAGGED);
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(response);
         }
 
@@ -80,10 +82,10 @@ public class TradeService {
     private ResponseEntity<Map<String, String>> suspiciousCheck(String uniqueTraderId, boolean isSuspicious, Map<String, String> response) {
         if (isSuspicious) {
             log.warn("Suspicious activity: {}", uniqueTraderId);
-            response.put("message", "Trade accepted. Trader flagged for suspicious activity and reported to the regulatory authority.");
+            response.put(MESSAGE, REJECTED_TRADE_REPORTED);
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
         } else {
-            response.put("message", "Trade accepted. No suspicious activity detected.");
+            response.put(MESSAGE, TRADE_ACCEPTED);
             return ResponseEntity.ok(response);
         }
     }

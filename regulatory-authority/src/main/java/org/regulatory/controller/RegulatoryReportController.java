@@ -5,7 +5,13 @@ import lombok.RequiredArgsConstructor;
 import org.apache.camel.ProducerTemplate;
 import org.common.model.RegulatoryReportDto;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.regulatory.contants.Constants.*;
 
 @RestController
 @RequestMapping("/regulatory/report")
@@ -22,8 +28,10 @@ public class RegulatoryReportController {
      */
     @PostMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public String receiveReport(@RequestBody @Valid RegulatoryReportDto report) {
-        producerTemplate.sendBody("direct:sendToKafka", report);
-        return "Report received and sent to Kafka topic.";
+    public ResponseEntity<Map<String, String>> receiveReport(@RequestBody @Valid RegulatoryReportDto report) {
+        producerTemplate.sendBody(ENDPOINT_SEND_TO_KAFKA, report);
+        Map<String, String> response = new HashMap<>();
+        response.put(MESSAGE, REGULATORY_RESPONSE);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
     }
 }
