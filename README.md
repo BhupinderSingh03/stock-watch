@@ -1,5 +1,8 @@
 # StockWatch - Kafka Integration
 
+# Requirements/Problem Statement:
+It can be found at the root level of project with the file name as problem_statement.docx.
+
 ## 🔧 Prerequisites
 
 - Java 17+
