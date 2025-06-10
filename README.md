@@ -12,6 +12,7 @@
    If you have Docker installed, you can use the provided `docker-compose.yml` file to start Kafka and Zookeeper.
   if you are at root of the project, run:
    ```bash
+    docker machine start
     docker-compose -f regulatory-authority/docker-compose.yml up -d
     ```
    if already running, you can stop it using:
@@ -20,7 +21,7 @@
     ```
    verify if Kafka and zookeeper is running:
    ```bash
-    podman ps -a
+    docker ps -a
     ```
 2. It's a multi-module Maven project containing three services and one common module
 3. Below are the three services and one common module in this project:
