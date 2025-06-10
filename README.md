@@ -91,6 +91,3 @@ It can be found at the root level of project with the file name as problem_state
 
 ## 📚 Architecture Diagram attached in the project root directory
 ![img.png](architecture.png)
-
-## Project is also available on my GitHub
-https://github.com/BhupinderSingh03/stock-watch
