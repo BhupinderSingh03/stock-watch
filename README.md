@@ -74,6 +74,7 @@
       ```
 13. If trader is already flagged, the trade-monitor service will not notify the regulatory authority again. You can check the Swagger UI for the error response format.
 14. In distrubuted environment, there is a possibility that the same trade can be processed by multiple instances of the trade-monitor service and it will try to notify the regulatory authority twice for the same trader. To avoid this, traderId is a unique contraint in the H2 database. If a trade with the same traderId is already present, it will not be processed again.
+15. jmeter script is exported from the jmeter tool where i am running 100 threads to process 100 requests in 1 second. File is present at the root of the project with name `trades_load_test.jmx`. You can run it using the jmeter tool to test the performance of the trade-monitor service.
 
 ## 🚀 Production Notes - pending to be implemented
 - For production use, consider using a more robust database instead of H2 with Partitioning.
